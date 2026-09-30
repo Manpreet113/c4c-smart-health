@@ -59,27 +59,42 @@ def enrich(row: dict) -> dict:
     }
 
 
-def gemini_text(prompt: str) -> Optional[str]:
+def gemini_text(prompt: str, tries: int = 3) -> Optional[str]:
+    """Call Gemini with retries on rate-limit/overload (free-tier 429/503s).
+    Returns None only when the key is missing or all tries fail — callers
+    then serve the built-in protocol text so the demo never blanks."""
+    import time
+
     key = os.getenv("GEMINI_API_KEY", "").strip()
     if not key:
         return None
     model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash").strip() or "gemini-2.5-flash"
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-    try:
-        r = requests.post(
-            url,
-            params={"key": key},
-            json={"contents": [{"parts": [{"text": prompt}]}]},
-            timeout=25,
-        )
-        if r.status_code != 200:
+    for attempt in range(tries):
+        try:
+            r = requests.post(
+                url,
+                params={"key": key},
+                json={"contents": [{"parts": [{"text": prompt}]}]},
+                timeout=30,
+            )
+            if r.status_code == 200:
+                j = r.json()
+                parts = j.get("candidates", [{}])[0].get("content", {}).get("parts", [])
+                txt = "".join(p.get("text", "") for p in parts).strip()
+                if txt:
+                    return txt
+                return None  # empty but successful — don't retry
+            if r.status_code in (429, 500, 502, 503) and attempt < tries - 1:
+                time.sleep(2 * (attempt + 1))
+                continue
             return None
-        j = r.json()
-        parts = j.get("candidates", [{}])[0].get("content", {}).get("parts", [])
-        txt = "".join(p.get("text", "") for p in parts).strip()
-        return txt or None
-    except Exception:
-        return None
+        except Exception:
+            if attempt < tries - 1:
+                time.sleep(2 * (attempt + 1))
+                continue
+            return None
+    return None
 
 
 @app.get("/health")

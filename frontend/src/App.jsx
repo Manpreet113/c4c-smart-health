@@ -328,7 +328,7 @@ export default function App() {
               <div className="panel rv" style={{ '--i': 1 }}>
                 <h3 style={{ marginTop: 0 }}>Why this plan holds</h3>
                 <div className="advice">{plain(plan.rationale)}</div>
-                <p className="meta" style={{ marginTop: 12 }}>Source: {plan.rationale_source}. Confirm vehicle cold chain for insulin.</p>
+                <p className="meta" style={{ marginTop: 12 }}>Source: {plan.rationale_source}.{planDrug === 'Insulin' ? ' Confirm vehicle cold chain on every leg.' : ' Verify batch and register on handover.'}</p>
               </div>
             </div>
           )}
