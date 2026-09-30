@@ -23,10 +23,38 @@ function useReveal(deps = []) {
   }, deps);
 }
 
-function StatusTag({ s }) {
-  const cls = s === 'critical' ? 't-red' : s === 'watch' ? 't-yellow' : 't-green';
+function StatusTag({ s }) {  const cls = s === 'critical' ? 't-red' : s === 'watch' ? 't-yellow' : 't-green';
   const label = s === 'critical' ? 'Critical' : s === 'watch' ? 'Watch' : 'Healthy';
   return <span className={`tag ${cls}`}>{label}</span>;
+}
+
+/* Gemini returns markdown; the dashboard renders plain officer text. */
+function plain(t) {
+  return String(t || '').replace(/\*\*(.+?)\*\*/g, '$1').replace(/__(.+?)__/g, '$1').replace(/\*(.+?)\*/g, '$1').trim();
+}
+
+const DOT = { critical: '#9F2F2D', watch: '#956400', healthy: '#346538' };
+
+function MapDots({ rows }) {
+  const w = 520; const h = 340; const pad = 22;
+  const lats = rows.map((r) => r.lat); const lngs = rows.map((r) => r.lng);
+  const minLa = Math.min(...lats); const maxLa = Math.max(...lats);
+  const minLn = Math.min(...lngs); const maxLn = Math.max(...lngs);
+  const X = (lng) => pad + ((lng - minLn) / Math.max(maxLn - minLn, 1e-6)) * (w - pad * 2);
+  const Y = (la) => pad + (1 - (la - minLa) / Math.max(maxLa - minLa, 1e-6)) * (h - pad * 2);
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} width="100%" height="300" role="img" aria-label="PHC status map">
+      <rect x="0" y="0" width={w} height={h} rx="10" fill="#F9F9F8" stroke="#EAEAEA" />
+      {rows.map((r) => (
+        <g key={r.phc_id}>
+          <circle cx={X(r.lng)} cy={Y(r.lat)} r={r.status === 'critical' ? 9 : 7} fill={DOT[r.status]} opacity={r.status === 'critical' ? 0.9 : 0.75} />
+          {r.status === 'critical' && (
+            <circle cx={X(r.lng)} cy={Y(r.lat)} r="13" fill="none" stroke={DOT[r.status]} strokeWidth="1.5" opacity="0.45" />
+          )}
+        </g>
+      ))}
+    </svg>
+  );
 }
 
 function Chart({ series }) {
@@ -70,10 +98,12 @@ export default function App() {
   const [planDrug, setPlanDrug] = useState('ORS');
   const [plan, setPlan] = useState(null);
   const [alerts, setAlerts] = useState(null);
+  const [mapRows, setMapRows] = useState(null);
 
   useEffect(() => {
     api.districts().then(setDistricts).catch(() => setDErr('District summary unavailable. Check backend.'));
     api.alerts().then(setAlerts).catch(() => {});
+    api.phcs({ drug: 'ORS' }).then((j) => setMapRows(j.phcs || [])).catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -125,14 +155,28 @@ export default function App() {
 
       <main className="wrap">
         <section className="hero rv" style={{ '--i': 0 }}>
-          <span className="eyebrow">Track 03 · Smart Health · 30 PHCs live</span>
-          <h1>Every PHC stock-out, seen fourteen days early.</h1>
-          <p>One federated view of medicines, beds, and doctors across three districts, with AI forecasts and transfer plans.</p>
-          <div className="hero-row">
-            <a className="btn btn-dark" href="#forecast"><Crosshair size={16} weight="bold" /> View forecast</a>
-            <a className="btn" href="#stocks"><Package size={16} weight="bold" /> Browse stocks</a>
+          <div>
+            <span className="eyebrow">Track 03 · Smart Health · 30 PHCs live</span>
+            <h1>Stock-outs, seen fourteen days early.</h1>
+            <p>One federated view of medicines, beds, and doctors across three districts, with AI forecasts and transfer plans.</p>
+            <div className="hero-row">
+              <a className="btn btn-dark" href="#forecast"><Crosshair size={16} weight="bold" /> View forecast</a>
+              <a className="btn" href="#stocks"><Package size={16} weight="bold" /> Browse stocks</a>
+            </div>
           </div>
-          <p className="meta" style={{ marginTop: 14 }}>Prototype · Gemini narration on server · offline sample fallback · {totals.phc} PHCs · {totals.crit} critical rows</p>
+          <div className="map-card">
+            <div className="map-head">
+              <strong>ORS cover right now</strong>
+              <span className="meta">{mapRows ? `${mapRows.filter((r) => r.status === 'critical').length} critical of ${mapRows.length}` : 'loading live…'}</span>
+            </div>
+            {mapRows && mapRows.length > 0 ? <MapDots rows={mapRows} /> : <div><div className="skel" /><div className="skel" /></div>}
+            <div className="map-legend">
+              <span className="tag t-red">Critical</span>
+              <span className="tag t-yellow">Watch</span>
+              <span className="tag t-green">Healthy</span>
+              <span className="meta">ringed dots need transfers this week</span>
+            </div>
+          </div>
         </section>
 
         <section id="overview" className="section">
@@ -152,10 +196,11 @@ export default function App() {
                   <p className="meta" style={{ marginTop: 10 }}>{d.phc_count} PHCs · {d.drug_rows} drug rows tracked</p>
                 </div>
               ))}
-              <div className="card rv bento-wide" style={{ '--i': 3 }}>
-                <h3><Pulse size={16} weight="bold" style={{ verticalAlign: -2 }} /> How it stays live</h3>
-                <p className="meta">PHC registers sync nightly. Forecast recomputes on read. Collector verifies batch and register on every handover.</p>
-                <p style={{ marginTop: 10 }}><span className="tag t-blue">Federated</span> <span className="tag t-gray">Hindi + English</span></p>
+              <div className="card rv strip" style={{ '--i': 3 }}>
+                <Pulse size={18} weight="bold" />
+                <div><strong>Registers sync nightly.</strong> <span className="meta">Forecast recomputes on read · {totals.phc} PHCs · {totals.crit} critical rows · collector verifies batch and register on every handover</span></div>
+                <span className="tag t-blue">Federated</span>
+                <span className="tag t-gray">Hindi + English</span>
               </div>
             </div>
           )}
@@ -238,7 +283,7 @@ export default function App() {
               </div>
               <div className="panel rv" style={{ '--i': 1 }}>
                 <h3 style={{ marginTop: 0 }}>Officer advice</h3>
-                <div className="advice">{fc.advice}</div>
+                <div className="advice">{plain(fc.advice)}</div>
                 <p className="meta" style={{ marginTop: 12 }}>Verify against register before ordering. Weekend burn runs 8% higher.</p>
               </div>
             </div>
@@ -273,7 +318,7 @@ export default function App() {
               </div>
               <div className="panel rv" style={{ '--i': 1 }}>
                 <h3 style={{ marginTop: 0 }}>Why this plan holds</h3>
-                <div className="advice">{plan.rationale}</div>
+                <div className="advice">{plain(plan.rationale)}</div>
                 <p className="meta" style={{ marginTop: 12 }}>Source: {plan.rationale_source}. Confirm vehicle cold chain for insulin.</p>
               </div>
             </div>

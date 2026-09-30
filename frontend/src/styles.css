@@ -57,15 +57,15 @@ a { color: inherit; }
 }
 .nav-cta:active { transform: scale(0.98); }
 
-/* Hero — fits viewport, max 4 text elements */
-.hero { padding: 56px 0 32px; }
+/* Hero — split: text left, live map right. Fits viewport. */
+.hero { padding: 48px 0 28px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 28px; align-items: center; }
 .eyebrow {
   display: inline-block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
   background: var(--surface); border: 1px solid var(--border); border-radius: 9999px; padding: 5px 12px; color: var(--muted);
 }
 .hero h1 {
-  font-family: var(--font-serf); font-weight: 560; letter-spacing: -0.03em; line-height: 1.08;
-  font-size: clamp(34px, 5vw, 54px); margin: 18px 0 12px; max-width: 16ch;
+  font-family: var(--font-serf); font-weight: 560; letter-spacing: -0.03em; line-height: 1.06;
+  font-size: clamp(36px, 4.6vw, 56px); margin: 18px 0 12px; max-width: 14ch; text-wrap: balance;
 }
 .hero p { color: var(--muted); max-width: 62ch; margin: 0 0 20px; font-size: 16px; }
 .hero-row { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -85,9 +85,14 @@ a { color: inherit; }
 .section h2 { font-size: 24px; letter-spacing: -0.02em; margin: 0 0 6px; }
 .section .sub { color: var(--muted); margin: 0 0 18px; max-width: 65ch; font-size: 15px; }
 
-/* Bento — asymmetric 2fr 1fr 1fr, exactly 4 cells for 4 content blocks */
-.bento { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; }
-.bento-wide { grid-column: span 1; }
+/* Live map card */
+.map-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 18px 14px; }
+.map-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; }
+.map-legend { display: flex; gap: 12px; flex-wrap: wrap; padding-top: 10px; }
+
+/* Bento — 3 district cards; companion strip spans full width */
+.bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.strip { grid-column: 1 / -1; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
 .card {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 24px; transition: box-shadow 200ms var(--ease), transform 200ms var(--ease);
@@ -160,6 +165,7 @@ tr:last-child td { border-bottom: 0; }
 .footer { border-top: 1px solid var(--border); margin-top: 32px; padding: 24px 0 56px; color: var(--muted); font-size: 13px; }
 
 @media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
   .bento { grid-template-columns: 1fr; }
   .split { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; }
