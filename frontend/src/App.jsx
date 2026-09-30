@@ -47,6 +47,7 @@ function MapDots({ rows }) {
       <rect x="0" y="0" width={w} height={h} rx="10" fill="#F9F9F8" stroke="#EAEAEA" />
       {rows.map((r) => (
         <g key={r.phc_id}>
+          <title>{`${r.phc_id} ${r.phc_name} — ${r.drug}, ${r.days_to_zero} days left`}</title>
           <circle cx={X(r.lng)} cy={Y(r.lat)} r={r.status === 'critical' ? 9 : 7} fill={DOT[r.status]} opacity={r.status === 'critical' ? 0.9 : 0.75} />
           {r.status === 'critical' && (
             <circle cx={X(r.lng)} cy={Y(r.lat)} r="13" fill="none" stroke={DOT[r.status]} strokeWidth="1.5" opacity="0.45" />
@@ -58,27 +59,35 @@ function MapDots({ rows }) {
 }
 
 function Chart({ series }) {
-  const w = 560; const h = 160; const pad = 12;
+  const w = 560; const h = 176; const pad = 14; const labH = 20;
   const max = Math.max(1, ...series.map((p) => p.remaining));
-  const pts = series.map((p, i) => {
-    const x = pad + (i / Math.max(series.length - 1, 1)) * (w - pad * 2);
-    const y = h - pad - (p.remaining / max) * (h - pad * 2);
-    return `${x.toFixed(1)},${y.toFixed(1)}`;
-  }).join(' ');
-  const zeroY = h - pad;
+  const X = (i) => pad + (i / Math.max(series.length - 1, 1)) * (w - pad * 2);
+  const Y = (v) => (h - labH - pad) - (v / max) * (h - labH - pad * 2);
+  const pts = series.map((p, i) => `${X(i).toFixed(1)},${Y(p.remaining).toFixed(1)}`).join(' ');
+  const area = `${pad},${Y(0)} ${pts} ${(w - pad).toFixed(1)},${Y(0)}`;
+  const zeroIdx = series.findIndex((p) => p.remaining <= 0);
+  const zeroX = zeroIdx >= 0 ? X(zeroIdx) : null;
   return (
-    <svg viewBox={`0 0 ${w} ${h}`} width="100%" height="150" role="img" aria-label="14-day stock forecast">
+    <svg viewBox={`0 0 ${w} ${h}`} width="100%" height="168" role="img" aria-label="14-day stock forecast">
       {[0.25, 0.5, 0.75].map((f) => (
-        <line key={f} x1={pad} x2={w - pad} y1={h * f} y2={h * f} stroke="#EAEAEA" strokeWidth="1" />
+        <line key={f} x1={pad} x2={w - pad} y1={(h - labH) * f} y2={(h - labH) * f} stroke="#EAEAEA" strokeWidth="1" />
       ))}
-      <line x1={pad} x2={w - pad} y1={zeroY} y2={zeroY} stroke="#111111" strokeWidth="1" opacity="0.35" />
+      <polygon points={area} fill="#111111" opacity="0.05" />
+      <line x1={pad} x2={w - pad} y1={Y(0)} y2={Y(0)} stroke="#111111" strokeWidth="1" opacity="0.35" />
       <polyline points={pts} fill="none" stroke="#111111" strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
-      {series.filter((p) => p.day % 2 === 0).map((p) => {
-        const i = p.day;
-        const x = pad + (i / Math.max(series.length - 1, 1)) * (w - pad * 2);
-        const y = h - pad - (p.remaining / max) * (h - pad * 2);
-        return <circle key={p.day} cx={x} cy={y} r="3.5" fill="#fff" stroke="#111" strokeWidth="2" />;
-      })}
+      {series.filter((p) => p.day % 2 === 0).map((p) => (
+        <circle key={p.day} cx={X(p.day)} cy={Y(p.remaining)} r="3.5" fill="#fff" stroke="#111" strokeWidth="2" />
+      ))}
+      {zeroX !== null && (
+        <g>
+          <line x1={zeroX} x2={zeroX} y1={pad} y2={Y(0)} stroke="#9F2F2D" strokeWidth="1.5" strokeDasharray="4 3" />
+          <circle cx={zeroX} cy={Y(0)} r="5" fill="#9F2F2D" />
+          <text x={Math.min(zeroX + 8, w - 70)} y={Y(0) - 8} fontSize="11" fill="#9F2F2D" fontWeight="700">stock-out</text>
+        </g>
+      )}
+      {[0, 7, 14].map((d) => (
+        <text key={d} x={d === 0 ? pad : d === 14 ? w - pad : X(d)} y={h - 5} fontSize="11" fill="#787774" textAnchor={d === 0 ? 'start' : d === 14 ? 'end' : 'middle'} fontFamily="monospace">Day {d}</text>
+      ))}
     </svg>
   );
 }

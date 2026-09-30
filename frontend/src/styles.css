@@ -54,7 +54,9 @@ a { color: inherit; }
 .nav-cta {
   background: var(--ink); color: #fff; border: 0; border-radius: 6px;
   padding: 9px 14px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap;
+  text-decoration: none;
 }
+.nav-cta:hover { background: #333; }
 .nav-cta:active { transform: scale(0.98); }
 
 /* Hero — split: text left, live map right. Fits viewport. */
@@ -123,6 +125,8 @@ select, input[type="search"] {
 table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 760px; }
 th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); padding: 12px 14px; border-bottom: 1px solid var(--border); background: var(--surface-2); }
 td { padding: 11px 14px; border-bottom: 1px solid var(--border); }
+tbody tr { transition: background 150ms var(--ease); }
+tbody tr:hover { background: var(--surface-2); }
 tr:last-child td { border-bottom: 0; }
 .num { font-family: var(--font-mono); }
 
