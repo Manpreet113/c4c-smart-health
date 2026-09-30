@@ -1,0 +1,17 @@
+# secrets
+.env
+backend/.venv/
+# python
+__pycache__/
+*.pyc
+# local taste-skill installs (design reference only, not part of submission)
+.agents/
+.claude/
+brag-output/
+skills-lock.json
+# node
+node_modules/
+dist/
+frontend/dist/
+# os
+.DS_Store

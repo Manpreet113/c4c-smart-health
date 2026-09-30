@@ -1,0 +1,121 @@
+phc_id,phc_name,district,lat,lng,drug,stock_units,avg_daily_use,beds_total,beds_free,doctors_present,doctors_required
+PHC001,Weaver Colony PHC,Bharatpur,27.2152,77.4928,Paracetamol,1800,120,20,6,2,3
+PHC001,Weaver Colony PHC,Bharatpur,27.2152,77.4928,Amoxicillin,420,60,20,6,2,3
+PHC001,Weaver Colony PHC,Bharatpur,27.2152,77.4928,ORS,2600,90,20,6,2,3
+PHC001,Weaver Colony PHC,Bharatpur,27.2152,77.4928,Insulin,95,12,20,6,2,3
+PHC002,Kumher Gate PHC,Bharatpur,27.3084,77.3746,Paracetamol,640,110,12,1,1,2
+PHC002,Kumher Gate PHC,Bharatpur,27.3084,77.3746,Amoxicillin,90,55,12,1,1,2
+PHC002,Kumher Gate PHC,Bharatpur,27.3084,77.3746,ORS,1100,85,12,1,1,2
+PHC002,Kumher Gate PHC,Bharatpur,27.3084,77.3746,Insulin,22,10,12,1,1,2
+PHC003,Nadbai Road PHC,Bharatpur,27.2311,77.2034,Paracetamol,2400,100,15,8,3,3
+PHC003,Nadbai Road PHC,Bharatpur,27.2311,77.2034,Amoxicillin,700,48,15,8,3,3
+PHC003,Nadbai Road PHC,Bharatpur,27.2311,77.2034,ORS,3100,95,15,8,3,3
+PHC003,Nadbai Road PHC,Bharatpur,27.2311,77.2034,Insulin,140,11,15,8,3,3
+PHC004,Deeg Road PHC,Bharatpur,27.1892,77.4811,Paracetamol,300,130,18,0,1,3
+PHC004,Deeg Road PHC,Bharatpur,27.1892,77.4811,Amoxicillin,60,62,18,0,1,3
+PHC004,Deeg Road PHC,Bharatpur,27.1892,77.4811,ORS,800,100,18,0,1,3
+PHC004,Deeg Road PHC,Bharatpur,27.1892,77.4811,Insulin,12,12,18,0,1,3
+PHC005,Sewar PHC,Bharatpur,27.2018,77.5123,Paracetamol,1500,105,22,10,3,3
+PHC005,Sewar PHC,Bharatpur,27.2018,77.5123,Amoxicillin,520,50,22,10,3,3
+PHC005,Sewar PHC,Bharatpur,27.2018,77.5123,ORS,2200,88,22,10,3,3
+PHC005,Sewar PHC,Bharatpur,27.2018,77.5123,Insulin,110,9,22,10,3,3
+PHC006,Bayana PHC,Bharatpur,26.9015,77.2847,Paracetamol,900,95,14,3,2,2
+PHC006,Bayana PHC,Bharatpur,26.9015,77.2847,Amoxicillin,200,45,14,3,2,2
+PHC006,Bayana PHC,Bharatpur,26.9015,77.2847,ORS,1500,80,14,3,2,2
+PHC006,Bayana PHC,Bharatpur,26.9015,77.2847,Insulin,40,8,14,3,2,2
+PHC007,Roopwas PHC,Bharatpur,26.9871,77.3012,Paracetamol,2100,90,16,7,2,2
+PHC007,Roopwas PHC,Bharatpur,26.9871,77.3012,Amoxicillin,610,42,16,7,2,2
+PHC007,Roopwas PHC,Bharatpur,26.9871,77.3012,ORS,2800,82,16,7,2,2
+PHC007,Roopwas PHC,Bharatpur,26.9871,77.3012,Insulin,130,10,16,7,2,2
+PHC008,Nagar PHC,Bharatpur,27.1023,77.4123,Paracetamol,450,115,10,0,0,2
+PHC008,Nagar PHC,Bharatpur,27.1023,77.4123,Amoxicillin,70,58,10,0,0,2
+PHC008,Nagar PHC,Bharatpur,27.1023,77.4123,ORS,600,92,10,0,0,2
+PHC008,Nagar PHC,Bharatpur,27.1023,77.4123,Insulin,8,9,10,0,0,2
+PHC009,Kaman PHC,Bharatpur,27.6541,77.2712,Paracetamol,1700,108,18,5,2,3
+PHC009,Kaman PHC,Bharatpur,27.6541,77.2712,Amoxicillin,480,52,18,5,2,3
+PHC009,Kaman PHC,Bharatpur,27.6541,77.2712,ORS,2400,86,18,5,2,3
+PHC009,Kaman PHC,Bharatpur,27.6541,77.2712,Insulin,88,11,18,5,2,3
+PHC010,Pahari PHC,Bharatpur,27.6112,77.2918,Paracetamol,1200,102,12,4,1,2
+PHC010,Pahari PHC,Bharatpur,27.6112,77.2918,Amoxicillin,310,47,12,4,1,2
+PHC010,Pahari PHC,Bharatpur,27.6112,77.2918,ORS,1900,84,12,4,1,2
+PHC010,Pahari PHC,Bharatpur,27.6112,77.2918,Insulin,55,9,12,4,1,2
+PHC011,Alwar City PHC,Alwar,27.5530,76.6346,Paracetamol,2000,125,24,9,3,4
+PHC011,Alwar City PHC,Alwar,27.5530,76.6346,Amoxicillin,650,55,24,9,3,4
+PHC011,Alwar City PHC,Alwar,27.5530,76.6346,ORS,3000,100,24,9,3,4
+PHC011,Alwar City PHC,Alwar,27.5530,76.6346,Insulin,150,13,24,9,3,4
+PHC012,Bhiwadi PHC,Alwar,28.2121,76.8174,Paracetamol,500,140,20,1,1,3
+PHC012,Bhiwadi PHC,Alwar,28.2121,76.8174,Amoxicillin,80,68,20,1,1,3
+PHC012,Bhiwadi PHC,Alwar,28.2121,76.8174,ORS,900,110,20,1,1,3
+PHC012,Bhiwadi PHC,Alwar,28.2121,76.8174,Insulin,15,14,20,1,1,3
+PHC013,Behror PHC,Alwar,27.8853,76.2879,Paracetamol,1600,98,16,6,2,2
+PHC013,Behror PHC,Alwar,27.8853,76.2879,Amoxicillin,540,46,16,6,2,2
+PHC013,Behror PHC,Alwar,27.8853,76.2879,ORS,2300,84,16,6,2,2
+PHC013,Behror PHC,Alwar,27.8853,76.2879,Insulin,105,10,16,6,2,2
+PHC014,Khairthal PHC,Alwar,27.8312,76.6421,Paracetamol,350,128,14,0,1,3
+PHC014,Khairthal PHC,Alwar,27.8312,76.6421,Amoxicillin,55,64,14,0,1,3
+PHC014,Khairthal PHC,Alwar,27.8312,76.6421,ORS,700,105,14,0,1,3
+PHC014,Khairthal PHC,Alwar,27.8312,76.6421,Insulin,10,11,14,0,1,3
+PHC015,Tijara PHC,Alwar,27.9318,76.8512,Paracetamol,1350,104,18,7,2,3
+PHC015,Tijara PHC,Alwar,27.9318,76.8512,Amoxicillin,430,49,18,7,2,3
+PHC015,Tijara PHC,Alwar,27.9318,76.8512,ORS,2100,87,18,7,2,3
+PHC015,Tijara PHC,Alwar,27.9318,76.8512,Insulin,92,9,18,7,2,3
+PHC016,Ramgarh PHC,Alwar,27.5912,76.7918,Paracetamol,800,96,12,2,1,2
+PHC016,Ramgarh PHC,Alwar,27.5912,76.7918,Amoxicillin,180,44,12,2,1,2
+PHC016,Ramgarh PHC,Alwar,27.5912,76.7918,ORS,1400,78,12,2,1,2
+PHC016,Ramgarh PHC,Alwar,27.5912,76.7918,Insulin,35,8,12,2,1,2
+PHC017,Govindgarh PHC,Alwar,27.5018,76.6412,Paracetamol,1900,92,15,8,3,3
+PHC017,Govindgarh PHC,Alwar,27.5018,76.6412,Amoxicillin,600,43,15,8,3,3
+PHC017,Govindgarh PHC,Alwar,27.5018,76.6412,ORS,2700,80,15,8,3,3
+PHC017,Govindgarh PHC,Alwar,27.5018,76.6412,Insulin,125,10,15,8,3,3
+PHC018,Laxmangarh PHC,Alwar,27.8214,76.4912,Paracetamol,280,132,11,0,0,2
+PHC018,Laxmangarh PHC,Alwar,27.8214,76.4912,Amoxicillin,45,66,11,0,0,2
+PHC018,Laxmangarh PHC,Alwar,27.8214,76.4912,ORS,550,98,11,0,0,2
+PHC018,Laxmangarh PHC,Alwar,27.8214,76.4912,Insulin,6,10,11,0,0,2
+PHC019,Kathumar PHC,Alwar,27.3218,76.7312,Paracetamol,1450,100,16,5,2,2
+PHC019,Kathumar PHC,Alwar,27.3218,76.7312,Amoxicillin,460,48,16,5,2,2
+PHC019,Kathumar PHC,Alwar,27.3218,76.7312,ORS,2200,82,16,5,2,2
+PHC019,Kathumar PHC,Alwar,27.3218,76.7312,Insulin,98,9,16,5,2,2
+PHC020,Mundawar PHC,Alwar,27.9512,76.5518,Paracetamol,1100,94,13,4,2,2
+PHC020,Mundawar PHC,Alwar,27.9512,76.5518,Amoxicillin,340,45,13,4,2,2
+PHC020,Mundawar PHC,Alwar,27.9512,76.5518,ORS,1800,79,13,4,2,2
+PHC020,Mundawar PHC,Alwar,27.9512,76.5518,Insulin,62,8,13,4,2,2
+PHC021,Dausa Town PHC,Dausa,26.8931,76.3339,Paracetamol,1750,112,20,7,2,3
+PHC021,Dausa Town PHC,Dausa,26.8931,76.3339,Amoxicillin,500,53,20,7,2,3
+PHC021,Dausa Town PHC,Dausa,26.8931,76.3339,ORS,2500,89,20,7,2,3
+PHC021,Dausa Town PHC,Dausa,26.8931,76.3339,Insulin,102,11,20,7,2,3
+PHC022,Lalsot PHC,Dausa,26.5612,76.3218,Paracetamol,420,118,12,1,1,2
+PHC022,Lalsot PHC,Dausa,26.5612,76.3218,Amoxicillin,75,59,12,1,1,2
+PHC022,Lalsot PHC,Dausa,26.5612,76.3218,ORS,850,94,12,1,1,2
+PHC022,Lalsot PHC,Dausa,26.5612,76.3218,Insulin,18,10,12,1,1,2
+PHC023,Bandikui PHC,Dausa,27.0518,76.5712,Paracetamol,1550,96,17,6,3,3
+PHC023,Bandikui PHC,Dausa,27.0518,76.5712,Amoxicillin,560,47,17,6,3,3
+PHC023,Bandikui PHC,Dausa,27.0518,76.5712,ORS,2400,83,17,6,3,3
+PHC023,Bandikui PHC,Dausa,27.0518,76.5712,Insulin,115,9,17,6,3,3
+PHC024,Mahwa PHC,Dausa,26.7012,76.9218,Paracetamol,260,135,13,0,0,3
+PHC024,Mahwa PHC,Dausa,26.7012,76.9218,Amoxicillin,40,67,13,0,0,3
+PHC024,Mahwa PHC,Dausa,26.7012,76.9218,ORS,500,102,13,0,0,3
+PHC024,Mahwa PHC,Dausa,26.7012,76.9218,Insulin,5,12,13,0,0,3
+PHC025,Sikrai PHC,Dausa,26.9018,76.6312,Paracetamol,1300,99,15,5,2,2
+PHC025,Sikrai PHC,Dausa,26.9018,76.6312,Amoxicillin,400,46,15,5,2,2
+PHC025,Sikrai PHC,Dausa,26.9018,76.6312,ORS,2000,81,15,5,2,2
+PHC025,Sikrai PHC,Dausa,26.9018,76.6312,Insulin,85,9,15,5,2,2
+PHC026,Ramgarh Pachwara PHC,Dausa,26.7812,76.4518,Paracetamol,950,93,11,3,1,2
+PHC026,Ramgarh Pachwara PHC,Dausa,26.7812,76.4518,Amoxicillin,220,43,11,3,1,2
+PHC026,Ramgarh Pachwara PHC,Dausa,26.7812,76.4518,ORS,1600,77,11,3,1,2
+PHC026,Ramgarh Pachwara PHC,Dausa,26.7812,76.4518,Insulin,48,8,11,3,1,2
+PHC027,Mandawar PHC,Dausa,27.1412,76.5118,Paracetamol,1850,94,19,9,3,3
+PHC027,Mandawar PHC,Dausa,27.1412,76.5118,Amoxicillin,620,44,19,9,3,3
+PHC027,Mandawar PHC,Dausa,27.1412,76.5118,ORS,2900,85,19,9,3,3
+PHC027,Mandawar PHC,Dausa,27.1412,76.5118,Insulin,135,10,19,9,3,3
+PHC028,Rahuwas PHC,Dausa,26.6518,76.5812,Paracetamol,380,122,10,0,1,2
+PHC028,Rahuwas PHC,Dausa,26.6518,76.5812,Amoxicillin,65,61,10,0,1,2
+PHC028,Rahuwas PHC,Dausa,26.6518,76.5812,ORS,750,96,10,0,1,2
+PHC028,Rahuwas PHC,Dausa,26.6518,76.5812,Insulin,14,11,10,0,1,2
+PHC029,Nangal PHC,Dausa,26.8312,76.7118,Paracetamol,1400,101,16,6,2,2
+PHC029,Nangal PHC,Dausa,26.8312,76.7118,Amoxicillin,450,49,16,6,2,2
+PHC029,Nangal PHC,Dausa,26.8312,76.7118,ORS,2150,84,16,6,2,2
+PHC029,Nangal PHC,Dausa,26.8312,76.7118,Insulin,90,9,16,6,2,2
+PHC030,Sainthal PHC,Dausa,26.7518,76.4012,Paracetamol,1050,97,12,4,1,2
+PHC030,Sainthal PHC,Dausa,26.7518,76.4012,Amoxicillin,300,45,12,4,1,2
+PHC030,Sainthal PHC,Dausa,26.7518,76.4012,ORS,1700,78,12,4,1,2
+PHC030,Sainthal PHC,Dausa,26.7518,76.4012,Insulin,58,8,12,4,1,2
