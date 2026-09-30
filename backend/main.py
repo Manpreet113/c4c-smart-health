@@ -68,7 +68,7 @@ def gemini_text(prompt: str, tries: int = 3) -> Optional[str]:
     key = os.getenv("GEMINI_API_KEY", "").strip()
     if not key:
         return None
-    model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash").strip() or "gemini-2.5-flash"
+    model = os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite").strip() or "gemini-3.1-flash-lite"
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
     for attempt in range(tries):
         try:

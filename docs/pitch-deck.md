@@ -29,7 +29,7 @@ One line: a federated AI view of medicines, beds, and doctors across 30 PHCs in 
 - Alerts: 49 flags, stock-outs first.
 
 ## Slide 6 — AI approach (mandatory Google AI, doing real work)
-- **Gemini 2.5-flash, server-side**: forecast narration (reorder qty + redistribution hint + care safeguard, EN + Hindi line) and redistribution rationale (why these moves keep care running, what to verify on handover).
+- **Gemini 3.1 Flash Lite, server-side**: forecast narration (reorder qty + redistribution hint + care safeguard, EN + Hindi line) and redistribution rationale (why these moves keep care running, what to verify on handover).
 - **Deterministic engine underneath**: days-to-zero = stock ÷ burn with weekend +8% surge; surplus (>21 days) covers critical (<7 days), nearest-first to protect cold chain.
 - **Graceful fallback**: built-in protocol text if the key is ever missing — demo never blanks.
 - Proof in UI: every advice box labels its source (`gemini` vs `heuristic-fallback`).
